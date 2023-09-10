@@ -1,0 +1,16 @@
+cmake_minimum_required(VERSION 3.26.0)
+
+set(CMAKE_CXX_STANDARD 23)
+set( CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR} CACHE STRING "" )
+set( CMAKE_LIBRARY_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR} CACHE STRING "" )
+
+project(Ramen VERSION 0.1.0 LANGUAGES C CXX)
+
+file(GLOB_RECURSE SRC_FILES "src/**.cpp")
+add_library(${PROJECT_NAME} SHARED ${SRC_FILES})
+
+include_directories(src)
+
+add_subdirectory(vendor/SDL EXCLUDE_FROM_ALL)
+target_link_libraries(${PROJECT_NAME} PRIVATE SDL3::SDL3)
+
