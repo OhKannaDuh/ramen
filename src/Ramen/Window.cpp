@@ -1,6 +1,7 @@
 #include "Window.h"
 
 #include "Ramen.h"
+#include "Renderer.h"
 
 namespace Ramen
 {
@@ -13,6 +14,15 @@ namespace Ramen
 
   Window::~Window() {
     SDL_DestroyWindow(this->window);
+  }
+
+  Vector2 Window::getDimensions() {
+    int width;
+    int height;
+
+    SDL_GetRenderLogicalPresentation(this->ramen->getRenderer()->getSdlRenderer(), &width, &height, nullptr, nullptr);
+
+    return {(float)width, (float)height};
   }
 
   SDL_Window *Window::getSdlWindow() {

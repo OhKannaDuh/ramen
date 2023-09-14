@@ -1,0 +1,89 @@
+#include "Ramen.h"
+
+#include "Camera.h"
+#include "Event.h"
+#include "JoystickManager.h"
+#include "Renderer.h"
+#include "TextureManager.h"
+#include "Timer.h"
+#include "Window.h"
+#include <SDL3/SDL.h>
+
+std::function<void(std::string)> Ramen::Ramen::errorCallback = ramen_error;
+
+namespace Ramen
+{
+  void Ramen::setErrorcallback(std::function<void(std::string)> callback) {
+    Ramen::errorCallback = callback;
+  }
+
+  void Ramen::error(std::string error) {
+    Ramen::errorCallback(error);
+  }
+
+  bool Ramen::init(uint32_t flags) {
+    if (SDL_Init(flags) != 0) {
+      Ramen::error(SDL_GetError());
+      return false;
+    }
+
+    return true;
+  }
+
+  std::shared_ptr<Window> Ramen::createWindow(std::string title, int width, int height, uint32_t flags) {
+    return this->window = std::make_shared<Window>(shared_from_this(), title, width, height, flags);
+  }
+
+  std::shared_ptr<Window> Ramen::getWindow() {
+    return this->window;
+  }
+
+  std::shared_ptr<Camera> Ramen::createCamera() {
+    return this->camera = std::make_shared<Camera>(shared_from_this());
+  }
+
+  std::shared_ptr<Camera> Ramen::getCamera() {
+    return this->camera;
+  }
+
+  std::shared_ptr<Renderer> Ramen::createRenderer(uint32_t flags) {
+    return this->renderer = std::make_shared<Renderer>(shared_from_this(), flags);
+  }
+
+  std::shared_ptr<Renderer> Ramen::getRenderer() {
+    return this->renderer;
+  }
+
+  std::shared_ptr<Event> Ramen::createEvents() {
+    return this->events = std::make_shared<Event>(shared_from_this());
+  }
+
+  std::shared_ptr<Event> Ramen::getEvents() {
+    return this->events;
+  }
+
+  std::shared_ptr<TextureManager> Ramen::createTextureManager() {
+    return this->textures = std::make_shared<TextureManager>(shared_from_this());
+  }
+
+  std::shared_ptr<TextureManager> Ramen::getTextureManager() {
+    return this->textures;
+  }
+
+  std::shared_ptr<JoystickManager> Ramen::createJoystickManager() {
+    return this->joysticks = std::make_shared<JoystickManager>(shared_from_this());
+  }
+
+  std::shared_ptr<JoystickManager> Ramen::getJoystickManager() {
+    return this->joysticks;
+  }
+
+  std::shared_ptr<Timer> Ramen::createTimer() {
+    return this->timer = std::make_shared<Timer>();
+  }
+
+  std::shared_ptr<Timer> Ramen::getTimer() {
+    return this->timer;
+  }
+
+}; // namespace Ramen

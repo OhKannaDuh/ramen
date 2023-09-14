@@ -1,6 +1,7 @@
 #pragma once
 
-#include <SDL3/SDL_video.h>
+#include "Vector2.h"
+#include <SDL3/SDL.h>
 #include <memory>
 #include <stdint.h>
 #include <string>
@@ -13,6 +14,7 @@ namespace Ramen
     public:
       Window(std::shared_ptr<Ramen> ramen, std::string title, int width, int height, uint32_t flags);
       ~Window();
+      Vector2 getDimensions();
       SDL_Window *getSdlWindow();
 
     private:
