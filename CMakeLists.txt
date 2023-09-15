@@ -12,5 +12,5 @@ add_library(${PROJECT_NAME} SHARED ${SRC_FILES})
 include_directories(src)
 
 add_subdirectory(vendor/SDL EXCLUDE_FROM_ALL)
-target_link_libraries(${PROJECT_NAME} PRIVATE SDL3::SDL3)
+target_link_libraries(${PROJECT_NAME} PUBLIC SDL3::SDL3)
 
