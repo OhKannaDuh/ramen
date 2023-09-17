@@ -14,3 +14,6 @@ include_directories(src)
 add_subdirectory(vendor/SDL EXCLUDE_FROM_ALL)
 target_link_libraries(${PROJECT_NAME} PUBLIC SDL3::SDL3)
 
+add_subdirectory(vendor/SDL_image EXCLUDE_FROM_ALL)
+target_link_libraries(${PROJECT_NAME} PUBLIC SDL3_image::SDL3_image)
+
