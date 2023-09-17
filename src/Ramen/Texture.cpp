@@ -4,12 +4,11 @@
 #include "Renderer.h"
 #include <SDL3/SDL_error.h>
 #include <SDL3/SDL_surface.h>
-#include <SDL3_image/SDL_image.h>
 
 namespace Ramen
 {
   Texture::Texture(std::shared_ptr<Ramen> ramen, std::string path) : ramen(ramen) {
-    SDL_Surface *image = IMG_Load(path.c_str());
+    SDL_Surface *image = SDL_LoadBMP(path.c_str());
     if (!image) {
       Ramen::error(SDL_GetError());
     }

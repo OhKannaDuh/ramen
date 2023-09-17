@@ -21,19 +21,9 @@ namespace Ramen
     Ramen::errorCallback(error);
   }
 
-  Ramen::~Ramen() {
-    IMG_Quit();
-    SDL_Quit();
-  }
-
-  bool Ramen::init(uint32_t sdlFlags, uint32_t imgFlags) {
-    if (SDL_Init(sdlFlags) != 0) {
+  bool Ramen::init(uint32_t flags) {
+    if (SDL_Init(flags) != 0) {
       Ramen::error(SDL_GetError());
-      return false;
-    }
-
-    if (IMG_Init(imgFlags) != 0) {
-      Ramen::error(IMG_GetError());
       return false;
     }
 
