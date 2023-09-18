@@ -15,6 +15,7 @@ namespace Ramen
     }
 
     SDL_SetRenderDrawBlendMode(this->renderer, SDL_BLENDMODE_BLEND);
+    SDL_SetHint("SDL_MOUSE_RELATIVE_SCALING", "1");
 
     this->camera = this->ramen->getCamera();
   }
@@ -54,6 +55,10 @@ namespace Ramen
         SDL_RenderFillRect(this->renderer, this->camera->transform(rectangle).getSdlRect());
         break;
     }
+  }
+
+  void Renderer::render(std::shared_ptr<Rectangle> rectangle, RectangleMode mode) {
+    return this->render(rectangle.get(), mode);
   }
 
   void Renderer::render(std::shared_ptr<Texture> texture) {

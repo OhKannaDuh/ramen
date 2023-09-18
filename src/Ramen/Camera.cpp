@@ -41,23 +41,7 @@ namespace Ramen
   }
 
   void Camera::tick(double delta) {
-    this->target = this->centerCallback();
-    this->position = this->target;
-
-    if (this->target != this->position) {
-      this->timeFollowing += delta;
-      Vector2 distance = this->position - this->target;
-      std::cout << "Distance: " << distance.mag() << std::endl;
-    }
-
-    // this->timeFollowing += delta;
-
-    // if (this->target == this->position) {
-    //   this->timeFollowing = 0;
-    // }
-
-    // this->position.x = std::lerp(this->position.x, this->target.x, this->timeFollowing);
-    // this->position.y = std::lerp(this->position.y, this->target.y, this->timeFollowing);
+    this->position = this->centerCallback();
 
     if (this->bounds.w <= 0 || this->bounds.h <= 0) {
       return;

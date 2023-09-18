@@ -13,9 +13,12 @@ namespace Ramen
       Vector2(float x, float y);
       bool operator==(Vector2 &other);
       Vector2 operator-(Vector2 &other);
+      Vector2 operator+(Vector2 &other);
       void operator-=(Vector2 &other);
       float mag();
       void normalize();
+      float distance(Vector2 &other);
+      Vector2 from(Vector2 &other, float distance);
       SDL_FPoint *getSdlPoint();
 
     private:

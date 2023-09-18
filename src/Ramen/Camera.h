@@ -24,7 +24,6 @@ namespace Ramen
       int width;
       int height;
       Vector2 position;
-      Vector2 target;
       double timeFollowing = 0;
       Vector2 offset;
       Rectangle bounds;

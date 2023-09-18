@@ -1,5 +1,7 @@
 #pragma once
 
+#include <SDL3/SDL_init.h>
+#include <SDL3_image/SDL_image.h>
 #include <functional>
 #include <memory>
 #include <stdexcept>
@@ -25,7 +27,9 @@ namespace Ramen
       static void setErrorcallback(std::function<void(std::string)> callback);
       static void error(std::string error);
 
-      bool init(uint32_t flags);
+      ~Ramen();
+
+      bool init(uint32_t sdlFlags = SDL_INIT_EVERYTHING, uint32_t imgFlags = IMG_INIT_PNG);
 
       std::shared_ptr<Window> createWindow(std::string title, int width, int height, uint32_t flags);
       std::shared_ptr<Window> getWindow();

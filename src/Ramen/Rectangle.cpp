@@ -13,6 +13,7 @@ namespace Ramen
   }
 
   bool Rectangle::contains(Vector2 *point) {
+    return SDL_PointInRectFloat(point->getSdlPoint(), this->getSdlRect());
     if (point->x < this->x || point->x > this->x + this->w) {
       return false;
     }
@@ -24,16 +25,15 @@ namespace Ramen
     return true;
   }
 
-  bool Rectangle::intersects(const Rectangle *other) {
-    if (this->x > (other->x + other->w) || (this->x + this->w < other->x)) {
-      return false;
-    }
+  bool Rectangle::intersects(Rectangle *other) {
+    return SDL_HasRectIntersectionFloat(other->getSdlRect(), this->getSdlRect());
+  }
 
-    if (this->y < (other->y + other->h) || (this->y + this->h > other->y)) {
-      return false;
-    }
+  Rectangle Rectangle::getIntersection(Rectangle *other) {
+    SDL_FRect intersection;
+    SDL_GetRectIntersectionFloat(other->getSdlRect(), this->getSdlRect(), &intersection);
 
-    return true;
+    return {intersection.x, intersection.y, intersection.w, intersection.h};
   }
 
   Vector2 Rectangle::getCenter() {

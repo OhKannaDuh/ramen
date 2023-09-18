@@ -15,7 +15,8 @@ namespace Ramen
       Rectangle(float x = 0, float y = 0, float w = 0, float h = 0);
       Rectangle(int x, int y, int w, int h);
       bool contains(Vector2 *point);
-      bool intersects(const Rectangle *other);
+      bool intersects(Rectangle *other);
+      Rectangle getIntersection(Rectangle *other);
       Vector2 getCenter();
       SDL_FRect *getSdlRect();
 

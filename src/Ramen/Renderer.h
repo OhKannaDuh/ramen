@@ -28,6 +28,8 @@ namespace Ramen
       SDL_Renderer *getSdlRenderer();
 
       void render(Rectangle *rectangle, RectangleMode mode = RectangleMode::Outline);
+      void render(std::shared_ptr<Rectangle> rectangle, RectangleMode mode = RectangleMode::Outline);
+
       void render(std::shared_ptr<Texture> texture);
       void render(std::shared_ptr<Texture> texture, Rectangle *rectangle);
       void render(std::shared_ptr<Texture> texture, Rectangle *source, Rectangle *destination);
