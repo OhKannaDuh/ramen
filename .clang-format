@@ -1,0 +1,17 @@
+IndentWidth: 2
+
+BreakBeforeBraces: Custom
+BraceWrapping:
+  AfterNamespace: true
+IndentAccessModifiers: true
+IndentCaseBlocks: true
+IndentCaseLabels: true
+NamespaceIndentation: All
+
+AllowShortBlocksOnASingleLine: false
+AllowShortFunctionsOnASingleLine: false
+AllowShortEnumsOnASingleLine: false
+AlwaysBreakTemplateDeclarations: true
+AllowShortLambdasOnASingleLine: false
+
+ColumnLimit: 180
