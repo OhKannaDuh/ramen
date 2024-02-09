@@ -26,4 +26,12 @@ namespace Ramen
   std::shared_ptr<Texture> Tileset::getTexture() const {
     return this->texture;
   }
+
+  int Tileset::getWidthInTiles() const {
+    return this->width;
+  }
+
+  int Tileset::getHeightInTiles() const {
+    return this->height;
+  }
 }; // namespace Ramen

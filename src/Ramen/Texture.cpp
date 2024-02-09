@@ -43,6 +43,9 @@ namespace Ramen
   }
 
   void Texture::update(std::shared_ptr<Texture> texture, Eigen::AlignedBox2i source, Eigen::AlignedBox2i destination) {
+
+    SDL_SetTextureBlendMode(this->getSdlTexture(), SDL_BLENDMODE_BLEND);
+
     SDL_Rect sourceRect = Rectangle::getSdlRect(source);
     SDL_Rect destinationRect = Rectangle::getSdlRect(destination);
 

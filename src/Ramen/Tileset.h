@@ -12,6 +12,8 @@ namespace Ramen
       Tileset(std::shared_ptr<Texture> texture, int width, int height);
       Eigen::AlignedBox2i get(int id);
       std::shared_ptr<Texture> getTexture() const;
+      int getWidthInTiles() const;
+      int getHeightInTiles() const;
 
     private:
       std::shared_ptr<Texture> texture;
