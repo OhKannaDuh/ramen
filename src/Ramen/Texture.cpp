@@ -49,8 +49,8 @@ namespace Ramen
     SDL_Rect sourceRect = Rectangle::getSdlRect(source);
     SDL_Rect destinationRect = Rectangle::getSdlRect(destination);
 
-    SDL_FRect sRect = {sourceRect.x, sourceRect.y, sourceRect.w, sourceRect.h};
-    SDL_FRect dRect = {destinationRect.x, destinationRect.y, destinationRect.w, destinationRect.h};
+    SDL_FRect sRect = {(float)sourceRect.x, (float)sourceRect.y, (float)sourceRect.w, (float)sourceRect.h};
+    SDL_FRect dRect = {(float)destinationRect.x, (float)destinationRect.y, (float)destinationRect.w, (float)destinationRect.h};
 
     SDL_RenderTexture(this->ramen->getRenderer()->getSdlRenderer(), texture->getSdlTexture(), &sRect, &dRect);
   }
